@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
 
 jobs:
   build:
@@ -24,6 +22,9 @@ jobs:
           java-version: '11'
           cache: gradle
 
+      - name: Get Short Commit SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+      
       - name: Grant Execute Permission
         run: chmod +x gradlew
 
@@ -54,5 +55,5 @@ jobs:
       - name: Upload Release AAB
         uses: actions/upload-artifact@v4
         with:
-          name: Release-AAB
+          name: ${{ env.SHORT_SHA }}
           path: app/build/outputs/bundle/release/*.aab
