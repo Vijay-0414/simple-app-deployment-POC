@@ -38,6 +38,17 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
 
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release-keystore.jks
+
+      - name: Create key.properties
+        run: |
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
+          echo "storeFile=release-keystore.jks" >> key.properties
+
       - name: Build Debug APK
         run: ./gradlew assembleDebug
 
