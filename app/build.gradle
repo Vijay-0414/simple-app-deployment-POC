@@ -34,11 +34,16 @@ android {
 			}
 		}
 	}
+
 	buildTypes {
 		release {
 			if (keystorePropertiesFile.exists()) {
 				signingConfig signingConfigs.release
+			} else {
+				// IMPORTANT: prevent Gradle crash in CI
+				signingConfig null
 			}
+
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),'proguard-rules.pro'
 		}
