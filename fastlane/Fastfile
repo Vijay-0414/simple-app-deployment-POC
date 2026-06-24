@@ -1,0 +1,17 @@
+default_platform(:android)
+
+platform :android do
+
+  desc "Build signed Release AAB"
+
+  lane :android_internal do
+
+    gradle(
+      task: "bundle",
+      build_type: "Release",
+      project_dir: "."
+    )
+
+  end
+
+end
