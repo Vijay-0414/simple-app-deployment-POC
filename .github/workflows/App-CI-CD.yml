@@ -73,6 +73,18 @@ jobs:
           java-version: '11'
           cache: gradle
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install Fastlane
+        run: bundle install
+        
       - name: Grant Execute Permission
         run: chmod +x gradlew
 
