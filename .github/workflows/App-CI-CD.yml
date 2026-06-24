@@ -99,9 +99,9 @@ jobs:
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
           echo "storeFile=aptster-upload-key.jks" >> key.properties
 
-      - name: Build Release AAB
-        run: ./gradlew bundleRelease
-
+      - name: Build Release AAB using Fastlane
+        run: bundle exec fastlane android android_internal
+        
       - name: Upload Release AAB
         uses: actions/upload-artifact@v4
         with:
