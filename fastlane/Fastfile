@@ -2,16 +2,20 @@ default_platform(:android)
 
 platform :android do
 
-  desc "Build signed Release AAB"
-
+  desc "Build signed Release AAB for Internal Testing"
   lane :android_internal do
-
     gradle(
       task: "bundle",
-      build_type: "Release",
-      project_dir: "."
+      build_type: "Release"
     )
+  end
 
+  desc "Build signed Release AAB for Production"
+  lane :android_production do
+    gradle(
+      task: "bundle",
+      build_type: "Release"
+    )
   end
 
 end
