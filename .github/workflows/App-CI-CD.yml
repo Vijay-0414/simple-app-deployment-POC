@@ -3,12 +3,12 @@ name: Mobile CI/CD
 on:
   pull_request:
     branches:
-      - develop
+      - dev
       - main
 
   push:
     branches:
-      - develop
+      - dev
       - main
 
   workflow_dispatch:
