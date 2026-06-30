@@ -3,7 +3,7 @@ name: Android CI & Internal Testing
 on:
   push:
     branches:
-      - dev
+      - develop
 
   pull_request:
     branches:
