@@ -1,0 +1,40 @@
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Build and upload to TestFlight"
+  lane :ios_internal do
+
+    build_app(
+      workspace: "YourApp.xcworkspace",   # Replace with actual workspace
+      scheme: "YourApp",                  # Replace with actual scheme
+      export_method: "app-store",
+      clean: true
+    )
+
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+
+  end
+
+  desc "Build and upload to App Store"
+  lane :ios_production do
+
+    build_app(
+      workspace: "YourApp.xcworkspace",
+      scheme: "YourApp",
+      export_method: "app-store",
+      clean: true
+    )
+
+    upload_to_app_store(
+      submit_for_review: false,
+      automatic_release: false,
+      skip_metadata: true,
+      skip_screenshots: true
+    )
+
+  end
+
+end
