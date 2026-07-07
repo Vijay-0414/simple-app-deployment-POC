@@ -1,0 +1,5 @@
+app_identifier("com.company.app") # Replace with your Bundle ID
+
+apple_id("ios-team@company.com") # Replace with your Apple ID
+
+team_id("ABCDE12345") # Replace with your Apple Team ID
