@@ -1,0 +1,51 @@
+name: iOS CI & TestFlight
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  ios-testflight:
+    name: Build & Upload to TestFlight
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Node Modules
+        run: npm install
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Install Gems
+        run: bundle install
+
+      - name: Install CocoaPods
+        run: |
+          cd ios
+          pod install
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      # Certificate Import
+      # Provisioning Profile Install
+      # App Store Connect Authentication
+
+      - name: Upload to TestFlight
+        run: |
+          cd ios
+          bundle exec fastlane ios ios_internal
