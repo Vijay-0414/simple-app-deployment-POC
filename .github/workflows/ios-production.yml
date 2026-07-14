@@ -6,6 +6,13 @@ on:
       - main
     types:
       - closed
+    paths:
+      - 'ios/**'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'yarn.lock'
+      - '.github/workflows/ios-*'
 
 jobs:
   deploy-production:
