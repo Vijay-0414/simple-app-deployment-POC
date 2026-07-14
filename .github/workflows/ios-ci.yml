@@ -3,7 +3,7 @@ name: iOS CI & TestFlight
 on:
   push:
     branches:
-      - develop
+      - dev
 
 jobs:
   ios-testflight:
