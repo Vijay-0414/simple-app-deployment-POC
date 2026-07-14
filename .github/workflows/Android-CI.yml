@@ -12,16 +12,10 @@ on:
       - 'yarn.lock'
       - '.github/workflows/android-*'
 
-  pull_request:
-    branches:
-      - dev
-    paths:
-      - 'android/**'
-      - 'src/**'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'yarn.lock'
-      - '.github/workflows/android-*'
+#  pull_request:
+#    branches:
+#      - dev
+
 
 jobs:
   test:
