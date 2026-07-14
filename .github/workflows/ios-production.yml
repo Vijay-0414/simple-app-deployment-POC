@@ -1,0 +1,20 @@
+name: iOS Production Deployment
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  deploy-production:
+    if: github.event.pull_request.merged == true &&
+        github.event.pull_request.head.ref == 'develop'
+
+    uses: ./.github/workflows/ios-common.yml
+
+    with:
+      lane: ios_production
+
+    secrets: inherit
