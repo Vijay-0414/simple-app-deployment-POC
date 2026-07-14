@@ -6,6 +6,13 @@ on:
       - main
     types:
       - closed
+    paths:
+      - 'android/**'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'yarn.lock'
+      - '.github/workflows/android-*'
 
 jobs:
   android-production-deploy:
