@@ -3,11 +3,25 @@ name: Android CI & Internal Testing
 on:
   push:
     branches:
-      - develop
+      - dev
+    paths:
+      - 'android/**'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'yarn.lock'
+      - '.github/workflows/android-*'
 
   pull_request:
     branches:
-      - develop
+      - dev
+    paths:
+      - 'android/**'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'yarn.lock'
+      - '.github/workflows/android-*'
 
 jobs:
   test:
